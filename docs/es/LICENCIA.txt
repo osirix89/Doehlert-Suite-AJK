@@ -1,0 +1,9 @@
+LICENCIA DEL PROYECTO — GNU GPL v3.0 (GPL-3.0-only)
+
+Doehlert Suite se distribuye bajo la GNU General Public License versión 3.0 únicamente.
+
+En términos generales, esta licencia permite usar, estudiar, modificar y redistribuir el programa. Si se distribuyen copias o trabajos derivados cubiertos por la GPL, deben respetarse sus condiciones, incluidos los avisos de copyright, la misma licencia y los requisitos de entrega del código fuente correspondiente.
+
+El archivo LICENSE de la raíz contiene el texto legal íntegro de la licencia en inglés, que es el texto incluido en esta distribución. Esta nota en español es una explicación orientativa y no sustituye el texto legal de LICENSE.
+
+Las bibliotecas y dependencias de terceros mantienen sus propias licencias.

@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Entornos y configuración local
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# IDE / sistema operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Resultados locales generados por la aplicación
+Exports/
+*.log
+*.tmp
+
+# Paquetes generados
+build/
+dist/
+*.egg-info/

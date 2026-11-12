@@ -1,0 +1,11 @@
+MÓDULO DE AUDITORÍA — GUÍA DE MANTENIMIENTO (ESPAÑOL)
+
+El módulo de auditoría integrada es auditor/audit_doehlert.py. La aplicación principal lo importa para la pestaña Auditoría y varias respuestas. Conservá el archivo en esa ruta.
+
+La carpeta tests/ contiene pruebas automáticas de geometría del dominio, optimización restringida, lectura multirrespuesta y comparación con resultados publicados. Son herramientas de desarrollo; la aplicación no necesita ejecutarlas al iniciar.
+
+Ejecutar desde la raíz del repositorio:
+python -m unittest discover -s auditor/tests -v
+
+El ejecutor extendido es: python auditor/run_extended_audit.py
+Guarda el informe JSON en Exports/AAAA-MM-DD/Auditoria_Tecnica/.

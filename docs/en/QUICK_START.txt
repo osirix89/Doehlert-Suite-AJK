@@ -1,0 +1,14 @@
+DOEHLERT SUITE — QUICK START (ENGLISH)
+
+1. Install Python 3.10+, Tkinter, and requirements.txt dependencies.
+2. Run: python main.py
+3. In the Design tab, set three factor names and physical limits.
+4. Generate the Doehlert matrix and export its CSV template.
+5. Enter measured responses and import the completed CSV from File.
+6. Review model fit, optimum, ANOVA, coefficients, and diagnostics.
+7. Use the audit/multiple-response tab when needed.
+8. Exports are saved under Exports/YYYY-MM-DD.
+
+Language: Language > Español switches the interface to Spanish (restart required).
+Examples: the Examples folder contains synthetic and validation CSV files, not real measurements.
+Tests: python -m unittest discover -s auditor/tests -v

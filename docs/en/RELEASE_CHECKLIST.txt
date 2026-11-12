@@ -1,0 +1,30 @@
+DOEHLERT SUITE 0.1.0 — RELEASE CHECKLIST
+
+Repository identity
+- Version: 0.1.0
+- Primary language: English
+- Secondary language: Spanish (selectable from the Language menu; restart required)
+- License: GPL-3.0-only
+
+Release contents
+- Python application and statistical modules
+- Integrated audit module and automated tests
+- Synthetic and validation CSV datasets
+- English and Spanish README, quick-start, technical manual, audit guide, and PDF documentation
+- GitHub Actions workflow
+
+Local validation performed for this package
+- Python compilation check
+- Unit test suite
+- GUI initialization in English and Spanish under a virtual display
+- Import check for every example/validation CSV
+- PDF generation and text extraction check
+
+Before publishing
+- Create a public GitHub repository named Doehlert-Suite.
+- Upload the repository contents (not the ZIP file as the only repository artifact).
+- Confirm the Actions workflow passes on GitHub.
+- Create and push the v0.1.0 tag.
+- Attach a source ZIP to the GitHub Release if desired.
+
+This checklist does not claim exhaustive validation of all statistical cases, operating systems, or graphical workflows.

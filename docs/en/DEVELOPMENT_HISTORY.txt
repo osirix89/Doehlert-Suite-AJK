@@ -1,0 +1,10 @@
+DOEHLERT SUITE — DEVELOPMENT HISTORY (ENGLISH)
+
+0.1.0 — Initial public release
+- Modular domain, optimization, multiple-response, and publication-comparison layers.
+- Integrated audit interface and export workflow.
+- English default interface with Spanish language selection.
+- Bilingual user and technical documentation.
+- Automated tests for selected core behaviors.
+
+Release checks should be repeated on the target operating system before production use.

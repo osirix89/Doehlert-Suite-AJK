@@ -1,0 +1,10 @@
+DOEHLERT SUITE — HISTORIAL DE DESARROLLO (ESPAÑOL)
+
+0.1.0 — Primera versión pública
+- Capas modulares de dominio, optimización, multirrespuesta y comparación con publicaciones.
+- Interfaz de auditoría integrada y flujo de exportación.
+- Interfaz predeterminada en inglés con selección de idioma español.
+- Documentación de usuario y técnica bilingüe.
+- Pruebas automáticas de comportamientos centrales seleccionados.
+
+Las verificaciones de la versión deben repetirse en el sistema operativo de destino antes del uso productivo.

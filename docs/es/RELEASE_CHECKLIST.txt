@@ -1,0 +1,30 @@
+DOEHLERT SUITE 0.1.0 — LISTA DE CONTROL DE PUBLICACIÓN
+
+Identidad del repositorio
+- Versión: 0.1.0
+- Idioma principal: inglés
+- Idioma secundario: español (seleccionable desde el menú Language; requiere reiniciar)
+- Licencia: GPL-3.0-only
+
+Contenido de la publicación
+- Aplicación Python y módulos estadísticos
+- Módulo de auditoría integrado y pruebas automáticas
+- Datasets CSV sintéticos y de validación
+- README, guías rápidas, manual técnico, guía de auditoría y documentación PDF en inglés y español
+- Flujo de GitHub Actions
+
+Verificaciones locales realizadas para este paquete
+- Compilación de Python
+- Suite de pruebas unitarias
+- Inicialización de la interfaz en inglés y español bajo una pantalla virtual
+- Comprobación de importación de todos los CSV de ejemplo y validación
+- Generación de PDF y comprobación de extracción de texto
+
+Antes de publicar
+- Crear un repositorio público de GitHub llamado Doehlert-Suite.
+- Subir el contenido del repositorio (no dejar el ZIP como único artefacto del repositorio).
+- Confirmar que el flujo de Actions finalice correctamente en GitHub.
+- Crear y subir la etiqueta v0.1.0.
+- Adjuntar un ZIP del código fuente al Release de GitHub si se desea.
+
+Esta lista no afirma una validación exhaustiva de todos los casos estadísticos, sistemas operativos o flujos gráficos.

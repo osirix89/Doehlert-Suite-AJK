@@ -1,0 +1,7 @@
+EJEMPLOS Y DATASETS DE VALIDACIÓN
+
+- Example_01 a Example_06: datasets sintéticos para practicar y hacer demostraciones.
+- Validation_01 a Validation_04: casos de referencia para cálculos exactos a mano, ajuste completo, falta de ajuste y diseño mínimo de 13 corridas.
+- Doehlert_table1_Y1.csv y Doehlert_table1_Y2.csv: datasets adicionales de múltiples respuestas.
+
+Estos archivos son exclusivamente para demostración y pruebas; no son mediciones experimentales reales. Importalos desde el menú Archivo de la aplicación.

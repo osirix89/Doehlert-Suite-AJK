@@ -1,0 +1,22 @@
+CARPETA INTERNA: AUDITORIA Y PRUEBAS
+
+Esta carpeta contiene componentes técnicos. No es una carpeta de trabajo para
+el usuario final ni un lugar para guardar resultados o ejemplos.
+
+CONTENIDO
+- audit_doehlert.py: módulo de auditoría integral utilizado por la pestaña 5
+de Doehlert Suite. Debe permanecer aquí porque main.py lo carga desde esta ruta.
+- run_extended_audit.py: ejecutor de las pruebas automáticas.
+- tests/: pruebas automáticas de dominio, optimización, multirrespuesta y
+publicación.
+- LEEME.txt: esta explicación.
+
+DÓNDE ESTÁN LOS DEMÁS ARCHIVOS
+- Los CSV de demostración e importación están en ../Examples/.
+- Los informes y resultados históricos de auditoría están en
+  ../Exports/YYYY-MM-DD/Auditoria_Tecnica/.
+
+IMPORTANTE
+No borrar audit_doehlert.py ni tests/ si se desea conservar la auditoría y
+poder verificar futuras modificaciones. No guardar CSV de usuario ni informes
+nuevos manualmente en esta carpeta.

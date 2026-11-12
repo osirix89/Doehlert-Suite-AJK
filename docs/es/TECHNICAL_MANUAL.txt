@@ -1,0 +1,69 @@
+Doehlert Suite — Manual técnico y de usuario
+============================================
+Versión 0.1.0 · Edición en español · GPL-3.0-only
+
+Doehlert Suite es una aplicación de escritorio en Python para generar y analizar diseños experimentales Doehlert de tres factores. Incluye ajuste de superficies de respuesta cuadráticas, ANOVA, diagnóstico de residuos, optimización restringida, manejo de múltiples respuestas y una herramienta de auditoría integrada.
+
+1. Primeros pasos
+-----------------
+Instalá Python 3.10 o posterior, Tkinter y los paquetes indicados en requirements.txt. Creá y activá un entorno virtual, instalá las dependencias con python -m pip install -r requirements.txt y ejecutá python main.py.
+
+La aplicación inicia en inglés. Usá Language → Español para cambiar al español. La selección se guarda en el directorio personal del usuario y se solicita reiniciar para reconstruir todos los controles en el idioma elegido.
+
+Utilizá la carpeta Examples para datasets sintéticos de demostración y casos de validación. No son mediciones experimentales reales.
+
+2. Flujo de trabajo
+-------------------
+Diseño: ingresá los nombres de tres factores y sus límites físicos inferior y superior, definí las réplicas del centro, generá la matriz e inspeccioná la geometría 3D. Exportá la plantilla CSV antes de realizar las mediciones.
+
+Importación: completá la columna de respuesta con los valores medidos e importá el CSV. Verificá que factores y respuestas sean numéricos y que el archivo contenga las columnas requeridas.
+
+Análisis: revisá la superficie ajustada, el óptimo predicho, ANOVA, inferencia de coeficientes, falta de ajuste y diagnóstico de residuos por corrida. La auditoría y el análisis multirrespuesta están en la última pestaña.
+
+Exportaciones: los informes y tablas se organizan por fecha en Exports/AAAA-MM-DD. Conservá una copia del dataset original junto con cada informe para poder reproducir el análisis.
+
+3. Modelo cuadrático de superficie de respuesta
+-----------------------------------------------
+El modelo completo de segundo orden en variables codificadas es:
+
+Y = b0 + b1*x1 + b2*x2 + b3*x3 + b12*x1*x2 + b13*x1*x3 + b23*x2*x3 + b11*x1^2 + b22*x2^2 + b33*x3^2
+
+La matriz de diseño contiene diez columnas: intercepto, tres términos lineales, tres interacciones entre pares y tres términos cuadráticos. El vector de coeficientes se estima mediante la pseudoinversa de Moore–Penrose: beta_hat = X_plus * y. Se requiere rango columna completo igual a 10 para identificar todos los coeficientes.
+
+Las predicciones son y_hat = X * beta_hat. Los residuos son e_i = y_i - y_hat_i. SSE = suma(e_i^2), SST = suma((y_i - media(y))^2) y R-cuadrado = 1 - SSE/SST. El R-cuadrado ajustado considera la cantidad de parámetros y los grados de libertad residuales.
+
+4. ANOVA y falta de ajuste
+--------------------------
+El análisis de varianza descompone las sumas de cuadrados del modelo y del error. Cuando existen puntos replicados suficientes, el error residual puede separarse en error puro y falta de ajuste.
+
+F_LOF = MS_LOF / MS_PE; MS_LOF = SS_LOF / gl_LOF; MS_PE = SS_PE / gl_PE. Si no hay réplicas independientes suficientes, la falta de ajuste puede no ser estimable. El programa debe informar ese estado y no presentarlo como evidencia de un buen ajuste.
+
+La salida de coeficientes incluye estimaciones, errores estándar, estadísticos t, p-valores bilaterales e intervalos de confianza del 95% cuando son estimables. La significación estadística no demuestra importancia práctica ni causalidad.
+
+5. Dominio experimental y optimización
+--------------------------------------
+La capa de dominio diferencia la esfera Doehlert teórica (||x_cod|| <= 1), la envolvente convexa de las corridas experimentales, los límites físicos de los factores y la intersección admisible de esas restricciones.
+
+La optimización busca máximos y mínimos sujetos a las restricciones admitidas. Los resultados dependen del modelo ajustado, el escalado, la región factible y los puntos iniciales numéricos. Un óptimo en el borde debe interpretarse como un resultado restringido, no como prueba de que la respuesta física real tenga allí un óptimo global.
+
+No extrapoles fuera del dominio experimental admitido sin experimentos adicionales y justificación científica.
+
+6. Múltiples respuestas y resultados publicados
+-----------------------------------------------
+El flujo multirrespuesta admite CSV de formato ancho con una fila por corrida y columnas separadas para cada respuesta (por ejemplo Y1, Y2, Y3). Cada respuesta se ajusta y analiza por separado; el usuario debe decidir cómo ponderarlas o combinarlas para tomar una decisión.
+
+La herramienta de comparación con publicaciones coteja coeficientes o métricas suministradas. No reconstruye observaciones experimentales faltantes ni afirma equivalencia cuando no se dispone de los datos de origen.
+
+7. Auditoría, pruebas y reproducibilidad
+----------------------------------------
+El módulo de auditoría integrada está en auditor/audit_doehlert.py y es cargado por la quinta pestaña. Conservá ese archivo en su ubicación esperada. Las pruebas automáticas están en auditor/tests/ y son para mantenimiento; no se necesitan para el uso normal de la aplicación.
+
+Ejecutá las pruebas desde la raíz del repositorio con: python -m unittest discover -s auditor/tests -v. Las pruebas aprobadas cubren comportamientos seleccionados y no certifican todas las entradas ni todas las interacciones gráficas posibles.
+
+Para reproducibilidad, conservá el CSV original, versión de la aplicación, versiones de Python y dependencias, archivos exportados y advertencias mostradas durante el análisis. Evitá compartir datos confidenciales o identificables en reportes públicos de errores.
+
+8. Limitaciones y uso responsable
+---------------------------------
+La implementación actual está destinada a diseños Doehlert de tres factores. La validez del modelo depende de la cobertura del diseño, calidad de medición, replicación, comportamiento de residuos y contexto científico. La optimización numérica está condicionada por la aproximación cuadrática ajustada.
+
+La versión 0.1.0 es una primera publicación. Verificá los resultados importantes de forma independiente y confirmá experimentalmente los óptimos predichos antes de utilizarlos en operación. Informá errores con ejemplos mínimos reproducibles que no expongan datos confidenciales.

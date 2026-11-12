@@ -1,0 +1,11 @@
+AUDIT MODULE — MAINTAINER GUIDE (ENGLISH)
+
+The integrated audit module is auditor/audit_doehlert.py. The main application imports it for the Audit and Multiple Responses tab. Keep it at this path.
+
+The tests/ directory contains automated tests for domain geometry, constrained optimization, multiple-response CSV handling, and publication-result comparison. These tests are developer tools; the desktop application does not need to run them at startup.
+
+Run from the repository root:
+python -m unittest discover -s auditor/tests -v
+
+The extended runner is: python auditor/run_extended_audit.py
+It writes its JSON report under Exports/YYYY-MM-DD/Auditoria_Tecnica/.

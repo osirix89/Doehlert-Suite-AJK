@@ -1,0 +1,69 @@
+Doehlert Suite — Technical and User Manual
+==========================================
+Version 0.1.0 · English edition · GPL-3.0-only
+
+Doehlert Suite is a Python desktop application for generating and analyzing three-factor Doehlert experimental designs. It provides quadratic response-surface fitting, ANOVA, residual diagnostics, constrained optimization, multiple-response handling, and an integrated audit utility.
+
+1. Getting started
+------------------
+Install Python 3.10 or newer, Tkinter, and the packages listed in requirements.txt. Create and activate a virtual environment, install dependencies with python -m pip install -r requirements.txt, then launch python main.py.
+
+The application starts in English. Use Language → Español to switch to Spanish. The application stores the selection in the current user home directory and asks to restart so every widget is rebuilt in the selected language.
+
+Use the Examples folder for synthetic demonstration datasets and validation cases. They are not real experimental measurements.
+
+2. Application workflow
+-----------------------
+Design: enter three factor names and physical lower/upper limits, set the number of center replicates, generate the design matrix, and inspect the 3D geometry. Export the CSV template before collecting measurements.
+
+Data import: enter measured response values in the response column and import the completed CSV. Check that factor values and response values are numeric and that the file contains the required columns.
+
+Analysis: review the fitted response surface, predicted optimum, ANOVA, coefficient inference, lack-of-fit result, and run-by-run residual diagnostics. The audit and multiple-response tools are available in the final tab.
+
+Exports: generated reports and tables are organized by date under Exports/YYYY-MM-DD. Keep a copy of the source dataset with any report so the analysis can be reproduced.
+
+3. Quadratic response-surface model
+-----------------------------------
+The full second-order model in coded variables is:
+
+Y = b0 + b1*x1 + b2*x2 + b3*x3 + b12*x1*x2 + b13*x1*x3 + b23*x2*x3 + b11*x1^2 + b22*x2^2 + b33*x3^2
+
+The design matrix contains ten columns: intercept, three linear terms, three two-factor interactions, and three squared terms. The coefficient vector is estimated using the Moore–Penrose pseudoinverse: beta_hat = X_plus * y. A full column rank of 10 is required to identify all coefficients.
+
+Predictions are y_hat = X * beta_hat. Residuals are e_i = y_i - y_hat_i. SSE = sum(e_i^2), SST = sum((y_i - mean(y))^2), and R-squared = 1 - SSE/SST. Adjusted R-squared accounts for the number of fitted parameters and residual degrees of freedom.
+
+4. ANOVA and lack of fit
+------------------------
+The analysis of variance partitions the model and residual sums of squares. When replicated design points permit a pure-error estimate, residual error can be separated into pure error and lack of fit.
+
+F_LOF = MS_LOF / MS_PE; MS_LOF = SS_LOF / df_LOF; MS_PE = SS_PE / df_PE. If independent replicates are insufficient, lack of fit may be non-estimable. The software should report that state rather than treating it as evidence of a good fit.
+
+Coefficient output includes estimates, standard errors, t statistics, two-sided p-values, and 95% confidence intervals where estimable. Statistical significance does not establish practical or causal importance.
+
+5. Experimental domain and optimization
+---------------------------------------
+The domain layer distinguishes the theoretical Doehlert sphere (||x_coded|| <= 1), the convex hull of the experimental runs, the physical factor limits, and the admissible intersection of these constraints.
+
+The optimization layer searches for maxima and minima subject to the supported constraints. Results depend on the fitted model, scaling, feasible region, and numerical starting points. An optimum on a boundary should be interpreted as a constrained result, not as proof that the true physical response has a global optimum there.
+
+Do not extrapolate beyond the supported experimental domain without additional experiments and scientific justification.
+
+6. Multiple responses and published results
+-------------------------------------------
+The multiple-response workflow accepts wide-format CSV data with one row per run and separate response columns (for example Y1, Y2, Y3). Each response is fitted and analyzed separately; the user must decide how responses should be balanced or combined for a decision.
+
+The publication-comparison utility compares supplied coefficients or metrics. It does not reconstruct missing experimental observations or claim equivalence when source data are unavailable.
+
+7. Audit, testing, and reproducibility
+--------------------------------------
+The integrated audit module is located in auditor/audit_doehlert.py and is loaded by the fifth application tab. Keep this file in its expected location. Automated tests are in auditor/tests/ and are for maintainers, not required for normal application use.
+
+Run the tests from the repository root with: python -m unittest discover -s auditor/tests -v. Passing tests cover selected behaviors only and do not certify every possible input or graphical interaction.
+
+For reproducibility, retain the original CSV, application version, Python and dependency versions, export files, and any warnings shown during analysis. Avoid sharing confidential or identifiable data in public issue reports.
+
+8. Limitations and responsible use
+----------------------------------
+The current implementation is for three-factor Doehlert designs. Model validity depends on design coverage, measurement quality, replication, residual behavior, and scientific context. Numerical optimization is conditional on the fitted quadratic approximation.
+
+Version 0.1.0 is an initial public release. Verify important findings independently and confirm predicted optima experimentally before operational use. Report bugs with minimal reproducible examples that do not expose confidential data.

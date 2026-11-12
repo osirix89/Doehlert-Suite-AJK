@@ -1,0 +1,14 @@
+DOEHLERT SUITE — GUÍA RÁPIDA (ESPAÑOL)
+
+1. Instalá Python 3.10+, Tkinter y las dependencias de requirements.txt.
+2. Ejecutá: python main.py
+3. En la pestaña 1. Diseño, definí nombres y límites físicos de los tres factores.
+4. Generá la matriz Doehlert y exportá la plantilla CSV.
+5. Ingresá las respuestas medidas e importá el CSV completo desde Archivo.
+6. Revisá ajuste, óptimo, ANOVA, coeficientes y diagnóstico.
+7. Usá la pestaña de auditoría/multirrespuesta cuando corresponda.
+8. Las exportaciones se guardan en Exports/AAAA-MM-DD.
+
+Idioma: Desde la interfaz inicial en inglés: Language > Español. Para volver: Idioma > Inglés (requiere reiniciar).
+Ejemplos: Examples contiene CSV sintéticos y de validación, no mediciones reales.
+Pruebas: python -m unittest discover -s auditor/tests -v
