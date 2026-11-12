@@ -2,6 +2,8 @@
 
 Thank you for considering a contribution.
 
+https://paypal.me/osirix89?locale.x=es_XC&country.x=AR
+
 ## Before opening a pull request
 
 1. Open an issue for substantial changes so the design can be discussed first.
